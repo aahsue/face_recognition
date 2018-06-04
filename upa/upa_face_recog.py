@@ -23,11 +23,16 @@ runTime *= 60
 print("\nExpected students:")
 for root, dirs, files in os.walk("./images"):
     for filename in files:
-        print("\t" + filename[0:len(filename)-4].capitalize())
+        theFilename = filename.replace("_"," ")
+        theFilename = theFilename.title()
+        print("\t" + theFilename[0:len(theFilename)-4])
         imageLoaded = face_recognition.load_image_file("./images/" + filename)
-        imageEncode = face_recognition.face_encodings(imageLoaded)[0]
-        imagesKnownEncodings.append(imageEncode)
-        imagesKnownNames.append(filename[0:len(filename)-4].capitalize())
+        try:
+            imageEncode = face_recognition.face_encodings(imageLoaded)[0]
+            imagesKnownEncodings.append(imageEncode)
+            imagesKnownNames.append(theFilename[0:len(theFilename)-4])
+        except:
+            print ("error with " + filename)
     
 print("\nDetecting faces...")
 
