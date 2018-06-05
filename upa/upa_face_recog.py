@@ -1,5 +1,7 @@
 import face_recognition
 import cv2
+import sys
+tolerance = sys.argv[1]
 
 # upa face recognition program
 # user andrea
@@ -50,7 +52,7 @@ while True:
     # Loop through each face in this frame of video
     for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
         # See if the face is a match for the known face(s)
-        matches = face_recognition.compare_faces(imagesKnownEncodings, face_encoding)
+        matches = face_recognition.compare_faces(imagesKnownEncodings, face_encoding, float(tolerance))
 
         name = "Unknown"
 

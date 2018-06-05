@@ -4,7 +4,6 @@ import cv2
 import PIL.Image, PIL.ImageTk
 from cv2 import *
 import numpy as np
-
 # Callback for the "Blur" button
 #def blur_image():
   #  global cv_img
@@ -20,10 +19,9 @@ def retake_image():
     
     m = VideoCapture(0)
     s, img = m.read()
-    p = PIL.ImageTk.PhotoImage(img = PIL.Image.fromarray(img))
-    height, width, no_channels = img.shape
-    canvas.create_image(0, 0, image = p, anchor = tkinter.NW)
-    #updatedPicture = ImageTk.PhotoImage(Image.open(img))
+    photo = PIL.ImageTk.PhotoImage(image = PIL.Image.fromarray(img))
+    canvas.create_image(0, 0, image = photo , anchor = tkinter.NW)
+    ##updatedPicture = ImageTk.PhotoImage(Image.open(img))
     #w.configure(cv_img = updatedPicture)
     #height, width, no_channels = cv_img.shape
     #photo = PIL.ImageTk.PhotoImage(image = PIL.Image.fromarray(cv_img))
